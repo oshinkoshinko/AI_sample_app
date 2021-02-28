@@ -29,6 +29,7 @@ class TodolistsController < ApplicationController
 
   def update
     list = List.find(params[:id])
+    list.score = Language.get_data(list_params[:body])
     list.update(list_params)
     redirect_to todolist_path(list.id)
   end
